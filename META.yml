@@ -1,15 +1,27 @@
 --- #YAML:1.0
-name:                Test-Regexp
-version:             2009033101
-abstract:            ~
-license:             ~
-author:              
-    - Abigail <abigail@abigail.be>
-generated_by:        ExtUtils::MakeMaker version 6.42
-distribution_type:   module
-requires:     
-    Exporter:                      0
-    Test::Builder:                 0
+name:               Test-Regexp
+version:            2009040901
+abstract:           Test your regular expressions
+author:
+    - Abigail <test-regexp@abigail.be>
+license:            mit
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
+    Test::More:           0
+requires:
+    perl:           5.01
+    Test::Builder:  0
+resources:
+    repository:  git://github.com/Abigail/test--regexp.git
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.50
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4
+keywords:  []
