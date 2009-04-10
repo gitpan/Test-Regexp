@@ -12,11 +12,12 @@ use Test::Builder;
 our @EXPORT  = qw [match no_match];
 our @ISA     = qw [Exporter Test::More];
 
-our $VERSION = '2009040901';
+our $VERSION = '2009041001';
 
 BEGIN {
     binmode STDOUT, ":utf8";
 }
+
 
 my $Test = Test::Builder -> new;
 
@@ -367,6 +368,82 @@ sub no_match {
     goto &match;
 }
 
+sub new {
+    "Test::Regexp::Object" -> new
+}
+
+package Test::Regexp::Object;
+
+sub new {
+    bless \do {my $var} => shift;
+}
+
+use Hash::Util::FieldHash qw [fieldhash];
+
+fieldhash my %pattern;
+fieldhash my %keep_pattern;
+fieldhash my %name;
+fieldhash my %comment;
+fieldhash my %utf8_upgrade;
+fieldhash my %utf8_downgrade;
+fieldhash my %match;
+fieldhash my %reason;
+fieldhash my %show_line;
+fieldhash my %style;
+
+sub init {
+    my $self = shift;
+    my %arg  = @_;
+
+    $pattern        {$self} = $arg {pattern};
+    $keep_pattern   {$self} = $arg {keep_pattern};
+    $name           {$self} = $arg {name};
+    $comment        {$self} = $arg {comment};
+    $utf8_upgrade   {$self} = $arg {utf8_upgrade};
+    $utf8_downgrade {$self} = $arg {utf8_downgrade};
+    $match          {$self} = $arg {match};
+    $reason         {$self} = $arg {reason};
+    $show_line      {$self} = $arg {show_line};
+    $style          {$self} = $arg {style};
+
+    $self;
+}
+
+sub args {
+    my  $self = shift;
+    (
+        pattern        => $pattern        {$self},
+        keep_pattern   => $keep_pattern   {$self},
+        name           => $name           {$self},
+        comment        => $comment        {$self},
+        utf8_upgrade   => $utf8_upgrade   {$self},
+        utf8_downgrade => $utf8_downgrade {$self},
+        match          => $match          {$self},
+        show_line      => $show_line      {$self},
+        style          => $style          {$self},
+    )
+}
+
+sub match {
+    my  $self = shift;
+    my ($subject, $captures) = @_;
+
+    Test::Regexp::match subject  => $subject,
+                        captures => $captures,
+                        $self    -> args;
+}
+
+sub no_match {
+    my  $self = shift;
+    my ($subject, $captures) = @_;
+
+    Test::Regexp::no_match subject  => $subject,
+                           captures => $captures,
+                           $self    -> args;
+}
+
+
+
 
 1;
 
@@ -391,6 +468,14 @@ Test::Regexp - Test your regular expressions
 
  no_match subject      => "Baz",
           pattern      => qr /Quux/;
+
+ $checker = Test::Regexp -> new -> init (
+    keep_pattern => qr /(\w+)\s+\g{-1}/,
+    name         => "Double word matcher",
+ );
+
+ $checker -> match    ("foo foo", ["foo"]);
+ $checker -> no_match ("foo bar");
 
 =head1 DESCRIPTION
 
@@ -572,6 +657,30 @@ A for now undocumentated feature, and subject to change.
 Similar to C<< match >>, except that it tests whether a pattern does
 B<< not >> match a string. Accepts the same arguments as C<< match >>,
 except for C<< match >>.
+
+=head2 OO interface
+
+Since one typically checks a pattern with multiple strings, and it can
+be tiresome to repeatedly call C<< match >> or C<< no_match >> with the
+same arguments, there's also an OO interface. Using a pattern, one constructs
+an object and can then repeatedly call the object to match a string.
+
+To construct and initialize the object, call the following:
+
+ my $checker = Test::Regexp -> new -> init (
+    pattern      => qr  /PATTERN/,
+    keep_pattern => qr /(PATTERN)/,
+    ...
+ );
+
+C<< init >> takes exactly the same arguments as C<< match >>, with the
+exception of C<< subject >> and C<< captures >>. To perform a match,
+all C<< match >> (or C<< no_match >>) on the object. The first argument
+should be the subject the pattern should match against (see the
+C<< subject >> argument of C<< match >> discussed above). If there is a
+match against a capturing pattern, the second argument is a reference
+to an array with the matches (see the C<< captures >> argument of
+C<< match >> discussed above).
 
 =head1 RATIONALE
 
