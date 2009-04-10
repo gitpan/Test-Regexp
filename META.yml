@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Test-Regexp
-version:            2009041001
+version:            2009041002
 abstract:           Test your regular expressions
 author:
     - Abigail <test-regexp@abigail.be>
