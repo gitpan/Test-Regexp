@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Test-Regexp
-version:            2009041401
+version:            2009110401
 abstract:           Test your regular expressions
 author:
     - Abigail <test-regexp@abigail.be>
@@ -10,20 +10,30 @@ configure_requires:
     ExtUtils::MakeMaker:  0
 build_requires:
     ExtUtils::MakeMaker:  0
-    Test::More:           0
 requires:
     Exporter:             0
     Hash::Util::FieldHash:  0
     perl:                 5.01
+    strict:               0
     Test::Builder:        0
+    warnings:             0
 resources:
     repository:  git://github.com/Abigail/test--regexp.git
 no_index:
     directory:
         - t
         - inc
-generated_by:       ExtUtils::MakeMaker version 6.50
+generated_by:       ExtUtils::MakeMaker version 6.55_02
 meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4
-keywords:  []
+keywords:
+    - regular expression
+    - pattern
+    - regexp
+    - test
+    - tests
+test_requires:
+    strict:      0
+    Test::More:  0
+    warnings:    0
