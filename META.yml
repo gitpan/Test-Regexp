@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Test-Regexp
-version:            2009110401
+version:            2009120301
 abstract:           Test your regular expressions
 author:
     - Abigail <test-regexp@abigail.be>
@@ -8,8 +8,14 @@ license:            mit
 distribution_type:  module
 configure_requires:
     ExtUtils::MakeMaker:  0
+    strict:               0
+    Test::More:           0
+    warnings:             0
 build_requires:
     ExtUtils::MakeMaker:  0
+    strict:               0
+    Test::More:           0
+    warnings:             0
 requires:
     Exporter:             0
     Hash::Util::FieldHash:  0

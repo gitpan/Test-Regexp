@@ -1,17 +1,21 @@
+Version 2009120301
++ Fixed a bug that autovivified the correct number of named params.
++ Set build_requires & configure_requires.
+
 Version 2009041401
-- Added tests for POD and Kwalitee
-----
++ Added tests for POD and Kwalitee
+
 Version 2009041401
-- Fixed MANIFEST.
-----
++ Fixed MANIFEST.
+
 Version 2009041001
-- Add OO interface.
-----
++ Add OO interface.
+
 Version 2009040901
-- Modernized Makefile.PL.
-- POD fixes.
-- Added Changes file.
-- Removed $VERSION from test files.
-----
++ Modernized Makefile.PL.
++ POD fixes.
++ Added Changes file.
++ Removed $VERSION from test files.
+
 Version 2009033101
-- Initial release
++ Initial release
