@@ -12,7 +12,7 @@ use Test::Builder;
 our @EXPORT  = qw [match no_match];
 our @ISA     = qw [Exporter Test::More];
 
-our $VERSION = '2009120301';
+our $VERSION = '2009120501';
 
 BEGIN {
     binmode STDOUT, ":utf8";
@@ -427,21 +427,23 @@ sub args {
 }
 
 sub match {
-    my  $self = shift;
-    my ($subject, $captures) = @_;
+    my  $self     = shift;
+    my  $subject  = shift;
+    my  $captures = @_ % 2 ? shift : undef;
 
     Test::Regexp::match subject  => $subject,
                         captures => $captures,
-                        $self    -> args;
+                        $self    -> args, 
+                        @_;
 }
 
 sub no_match {
-    my  $self = shift;
-    my ($subject, $captures) = @_;
+    my  $self    = shift;
+    my  $subject = shift;
 
     Test::Regexp::no_match subject  => $subject,
-                           captures => $captures,
-                           $self    -> args;
+                           $self    -> args,
+                           @_;
 }
 
 
@@ -683,6 +685,9 @@ C<< subject >> argument of C<< match >> discussed above). If there is a
 match against a capturing pattern, the second argument is a reference
 to an array with the matches (see the C<< captures >> argument of
 C<< match >> discussed above).
+
+Both C<< match >> and C<< no_match >> can take additional (named) arguments,
+identical to the none-OO C<< match >> and C<< no_match >> routines.
 
 =head1 RATIONALE
 
