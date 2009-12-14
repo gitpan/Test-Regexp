@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Test-Regexp
-version:            2009121401
+version:            2009121402
 abstract:           Test your regular expressions
 author:
     - Abigail <test-regexp@abigail.be>
@@ -9,12 +9,12 @@ distribution_type:  module
 configure_requires:
     ExtUtils::MakeMaker:  0
     strict:               0
-    Test::More:           0
+    Test::More:           0.88
     warnings:             0
 build_requires:
     ExtUtils::MakeMaker:  0
     strict:               0
-    Test::More:           0
+    Test::More:           0.88
     warnings:             0
 requires:
     Exporter:             0
@@ -41,5 +41,5 @@ keywords:
     - tests
 test_requires:
     strict:      0
-    Test::More:  0
+    Test::More:  0.88
     warnings:    0
