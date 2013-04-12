@@ -60,7 +60,7 @@
          "url" : "git://github.com/Abigail/test--regexp.git"
       }
    },
-   "version" : "2013040301",
+   "version" : "2013041201",
    "x_test_requires" : {
       "Test::More" : 0.88,
       "strict" : 0,
