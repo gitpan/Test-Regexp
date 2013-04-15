@@ -5,15 +5,17 @@ author:
 build_requires:
   ExtUtils::MakeMaker: 0
   Test::More: 0.88
+  Test::Tester: 0
   strict: 0
   warnings: 0
 configure_requires:
   ExtUtils::MakeMaker: 0
   Test::More: 0.88
+  Test::Tester: 0
   strict: 0
   warnings: 0
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120630'
+generated_by: 'ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.120630'
 keywords:
   - 'regular expression'
   - pattern
@@ -37,9 +39,10 @@ requires:
   strict: 0
   warnings: 0
 resources:
-  repository: git://github.com/Abigail/test--regexp.git
-version: 2013041201
+  repository: git://github.com/Abigail/Test-Regexp.git
+version: 2013041501
 x_test_requires:
   Test::More: 0.88
+  Test::Tester: 0
   strict: 0
   warnings: 0

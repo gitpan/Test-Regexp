@@ -14,6 +14,7 @@ t/130_comment.t
 t/140_utf8.t
 t/150_reason.t
 t/160_show_line.t
+t/170_todo.t
 t/200_use.t
 t/201_example.t
 t/210_object.t
@@ -22,7 +23,8 @@ t/212_object_extra_args.t
 t/220_object_comment.t
 t/950_pod.t
 t/960_pod_coverage.t
-t/999_release.t
+t/980_versions.t
+t/982_git.t
 t/Common.pm
 META.yml                                 Module YAML meta-data (added by MakeMaker)
 META.json                                Module JSON meta-data (added by MakeMaker)
