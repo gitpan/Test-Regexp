@@ -40,7 +40,7 @@ requires:
   warnings: 0
 resources:
   repository: git://github.com/Abigail/Test-Regexp.git
-version: 2013041501
+version: 2013042101
 x_test_requires:
   Test::More: 0.88
   Test::Tester: 0

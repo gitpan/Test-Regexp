@@ -52,8 +52,13 @@ foreach my $file (@files, "README") {
 
     pass "Found version $version in $base";
 
-    ok $version le $main_version,
-      "      It does not exceed package version";
+    if ($file eq 'README') {
+        is $version, $main_version, "Version in README matches package version"
+    }
+    else {
+        ok $version le $main_version,
+          "      It does not exceed package version";
+    }
 }
 
 my %monthmap = qw [Jan 01 Feb 02 Mar 03 Apr 04 May 05 Jun 06
@@ -70,12 +75,16 @@ if (open my $fh, "<", "Changes") {
         is $version, $main_version => "      Version matches package version";
     }
     else {
+      SKIP: {
         fail "First line of Changes files correctly formatted: $first";
-    }
+        skip "Cannot extract a correctly formatted version", 2;
+    }}
 }
 else {
-    fail "Failed to open Changes file: $!"
-}
+  SKIP: {
+    fail "Failed to open Changes file: $!";
+    skip "Cannot open Changes file", 2;
+}}
 
 done_testing;
 
